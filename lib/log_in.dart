@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'sign_up.dart'; // Import the Sign-Up page
+import 'forgot.dart'; // Import the Forgot Password page
 
 class LoginPage extends StatelessWidget {
   @override
@@ -18,8 +18,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 80.0), // Adjust for positioning
-              // Logo or header icons (optional)
+              const SizedBox(height: 80.0),
               Image.asset(
                 'assets/logo.png', // Replace with your image path
                 height: 80.0,
@@ -42,7 +41,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30.0),
-              // Email Input Field
               TextField(
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.email, color: Colors.white),
@@ -58,7 +56,6 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 20.0),
-              // Password Input Field
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -75,7 +72,6 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 20.0),
-              // Sign In Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -92,12 +88,17 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.0),
-              // Forgot Password
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    // Handle forgot password logic
+                    // Navigate to Forgot Password page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ForgotPasswordPage(),
+                      ),
+                    );
                   },
                   child: Text(
                     'FORGOT PASSWORD',
@@ -106,7 +107,6 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.0),
-              // Sign Up Button
               Text(
                 "Don't have an account?",
                 style: TextStyle(color: Colors.white70),
@@ -117,10 +117,6 @@ class LoginPage extends StatelessWidget {
                 child: OutlinedButton(
                   onPressed: () {
                     // Navigate to the Sign-Up page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
-                    );
                   },
                   child: Text('Sign Up'),
                   style: OutlinedButton.styleFrom(
