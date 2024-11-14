@@ -1,129 +1,148 @@
 import 'package:flutter/material.dart';
-
+import 'log_in.dart'; // Import the login page
 
 class SignUpPage extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue.shade900, Colors.blue.shade400],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade900, Colors.black],
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 50.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Colors.white24,
-                  child: Icon(Icons.person, size: 60, color: Colors.white),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 80.0), // Adjust for positioning
+              Image.asset(
+                'assets/signup_icon.png', // Replace with your image path
+                height: 80.0,
+              ),
+              const SizedBox(height: 30.0),
+              const Text(
+                'Create an Account',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(height: 30),
-                _buildTextField(
-                  label: 'Name',
+              ),
+              SizedBox(height: 8.0),
+              // Name input field
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person, color: Colors.white),
                   hintText: 'Enter Your Name',
-                  icon: Icons.person,
+                  hintStyle: TextStyle(color: Colors.white54),
+                  filled: true,
+                  fillColor: Colors.black54,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
-                SizedBox(height: 20),
-                _buildTextField(
-                  label: 'E-mail',
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(height: 20.0),
+              // Email input field
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email, color: Colors.white),
                   hintText: 'Enter Email Address',
-                  icon: Icons.email,
-                ),
-                SizedBox(height: 20),
-                _buildTextField(
-                  label: 'Password',
-                  hintText: 'Enter Password',
-                  icon: Icons.lock,
-                  obscureText: true,
-                ),
-                SizedBox(height: 20),
-                _buildTextField(
-                  label: 'Confirm Password',
-                  hintText: 'Enter Password',
-                  icon: Icons.lock,
-                  obscureText: true,
-                ),
-                SizedBox(height: 30),
-                _buildButton(context, 'Sign Up', Colors.blue),
-                SizedBox(height: 10),
-                Text(
-                  'Already have an account?',
-                  style: TextStyle(color: Colors.white70),
-                ),
-                SizedBox(height: 5),
-                _buildButton(context, 'Login', Colors.blue),
-                SizedBox(height: 20),
-                Container(
-                  padding: EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Please Verify All Field',
-                    style: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white54),
+                  filled: true,
+                  fillColor: Colors.black54,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide.none,
                   ),
                 ),
-              ],
-            ),
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(height: 20.0),
+              // Password input field
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock, color: Colors.white),
+                  hintText: 'Enter Password',
+                  hintStyle: TextStyle(color: Colors.white54),
+                  filled: true,
+                  fillColor: Colors.black54,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(height: 20.0),
+              // Confirm Password input field
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock_outline, color: Colors.white),
+                  hintText: 'Confirm Password',
+                  hintStyle: TextStyle(color: Colors.white54),
+                  filled: true,
+                  fillColor: Colors.black54,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(height: 20.0),
+              // Sign Up button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle sign-up logic
+                  },
+                  child: Text('Sign Up'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade700,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              // Login button for navigation
+              Text(
+                "Already have an account?",
+                style: TextStyle(color: Colors.white70),
+              ),
+              SizedBox(height: 8.0),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () {
+                    // Navigate back to the LoginPage
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
+                  child: Text('Log In'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.blue, side: BorderSide(color: Colors.blue),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField({
-    required String label,
-    required String hintText,
-    required IconData icon,
-    bool obscureText = false,
-  }) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hintText,
-        prefixIcon: Icon(icon, color: Colors.white70),
-        filled: true,
-        fillColor: Colors.black.withOpacity(0.1),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.blue, width: 2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.blue, width: 2),
-        ),
-      ),
-      obscureText: obscureText,
-      style: TextStyle(color: Colors.white),
-    );
-  }
-
-  Widget _buildButton(BuildContext context, String text, Color color) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {
-          // Add your onPressed logic here
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          padding: EdgeInsets.symmetric(vertical: 15.0),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
     );
