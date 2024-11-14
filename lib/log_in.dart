@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'sign_up.dart'; // Import the Sign-Up page
 
 class LoginPage extends StatelessWidget {
   @override
@@ -116,10 +117,15 @@ class LoginPage extends StatelessWidget {
                 child: OutlinedButton(
                   onPressed: () {
                     // Navigate to the Sign-Up page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                    );
                   },
                   child: Text('Sign Up'),
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.blue, side: BorderSide(color: Colors.blue),
+                    foregroundColor: Colors.blue,
+                    side: BorderSide(color: Colors.blue),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
