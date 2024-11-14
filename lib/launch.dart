@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'sign_up.dart'; // Import the SignUpPage
 
 class LaunchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Automatically navigate to SignUpPage after a delay (e.g., 3 seconds)
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SignUpPage()),
+      );
+    });
+
     return Scaffold(
       body: Container(
         width: double.infinity,
