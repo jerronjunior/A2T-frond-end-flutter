@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'forgot.dart'; // Import the Forgot Password page
+import 'Home_page.dart'; // Import the HomePage
+import 'forgot.dart'; // Import Forgot Password Page
+import 'sign_up.dart'; // Import Sign-Up Page
 
 class LoginPage extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +25,7 @@ class LoginPage extends StatelessWidget {
             children: [
               const SizedBox(height: 80.0),
               Image.asset(
-                'assets/logo.png', // Replace with your image path
+                'assets/logo.png',
                 height: 80.0,
               ),
               const SizedBox(height: 30.0),
@@ -32,16 +37,17 @@ class LoginPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8.0),
-              Text(
+              const SizedBox(height: 8.0),
+              const Text(
                 'Login first',
                 style: TextStyle(
                   color: Colors.white70,
                   fontSize: 18.0,
                 ),
               ),
-              SizedBox(height: 30.0),
+              const SizedBox(height: 30.0),
               TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.email, color: Colors.white),
                   hintText: 'Enter Email Address',
@@ -55,8 +61,9 @@ class LoginPage extends StatelessWidget {
                 ),
                 style: TextStyle(color: Colors.white),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               TextField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock, color: Colors.white),
@@ -71,14 +78,28 @@ class LoginPage extends StatelessWidget {
                 ),
                 style: TextStyle(color: Colors.white),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle sign-in logic here
+                    String email = emailController.text.trim();
+                    String password = passwordController.text.trim();
+
+                    if (email.isNotEmpty && password.isNotEmpty) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Please enter both email and password.'),
+                        ),
+                      );
+                    }
                   },
-                  child: Text('Sign In'),
+                  child: const Text('Sign In'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue.shade700,
                     shape: RoundedRectangleBorder(
@@ -87,12 +108,11 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    // Navigate to Forgot Password page
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -100,28 +120,33 @@ class LoginPage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     'FORGOT PASSWORD',
                     style: TextStyle(color: Colors.white70),
                   ),
                 ),
               ),
-              SizedBox(height: 20.0),
-              Text(
+              const SizedBox(height: 20.0),
+              const Text(
                 "Don't have an account?",
                 style: TextStyle(color: Colors.white70),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Navigate to the Sign-Up page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpPage(),
+                      ),
+                    );
                   },
-                  child: Text('Sign Up'),
+                  child: const Text('Sign Up'),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.blue,
-                    side: BorderSide(color: Colors.blue),
+                    side: const BorderSide(color: Colors.blue),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
