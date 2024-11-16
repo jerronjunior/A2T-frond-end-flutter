@@ -5,114 +5,131 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1F2029),
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Home'),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
+        leading: IconButton(
+          icon: Icon(Icons.menu, color: Colors.white),
+          onPressed: () {
+            // Add functionality for menu button if needed
           },
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout, color: Colors.white),
+            onPressed: () {
+              // Add functionality for logout button if needed
+            },
+          ),
+        ],
       ),
-      drawer: Drawer(
-        backgroundColor: Color(0xFF1F2029), // Matches the dark theme
+      backgroundColor: Color(0xFF1F2029), // Background color
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Profile Header
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF282C35),
-              ),
-              accountName: Text(
-                "test01@gmail.com",
-                style: TextStyle(color: Colors.white),
-              ),
-              accountEmail: Row(
-                children: [
-                  Icon(Icons.call, color: Colors.white70),
-                  SizedBox(width: 8.0),
-                  Text(
-                    "00:47",
-                    style: TextStyle(color: Colors.white70),
-                  ),
-                ],
-              ),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 50.0,
-                  color: Colors.black,
-                ),
+            Text(
+              'Hello',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 32.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            // Menu Options
+            SizedBox(height: 4.0),
+            Text(
+              'Welcome Back!',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 18.0,
+              ),
+            ),
+            SizedBox(height: 32.0),
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
                 children: [
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.home,
-                    text: "Home",
+                  // First Button
+                  GestureDetector(
                     onTap: () {
-                      Navigator.pop(context); // Close the drawer
+                      // Navigate to Real-Time Detection page
                     },
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.language,
-                    text: "All Sign Languages",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/allSignLanguages');
-                    },
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.translate,
-                    text: "Translator",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/translator');
-                    },
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.info,
-                    text: "How to Use",
-                    onTap: () {
-                      Navigator.pushNamed(context, '/howToUse');
-                    },
-                  ),
-                  Divider(color: Colors.white24),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0, top: 8.0),
-                    child: Text(
-                      "Profile",
-                      style: TextStyle(color: Colors.white70),
+                    child: Container(
+                      padding: EdgeInsets.all(16.0),
+                      margin: EdgeInsets.only(bottom: 16.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF44D4C0),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.access_time, color: Colors.black, size: 40.0),
+                          SizedBox(width: 16.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Real-Time Sign Language Detection',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'from A to Y',
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.person,
-                    text: "Profile",
+                  // Second Button
+                  GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/profile');
+                      // Navigate to Text to Voice Sign Language page
                     },
-                  ),
-                  _buildDrawerItem(
-                    context,
-                    icon: Icons.logout,
-                    text: "Logout",
-                    onTap: () {
-                      // Implement logout logic here
-                      Navigator.pushReplacementNamed(context, '/login');
-                    },
+                    child: Container(
+                      padding: EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFB18AE0),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.mic, color: Colors.black, size: 40.0),
+                          SizedBox(width: 16.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Text to Voice Sign Language',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Add letters and convert it to speech',
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -120,25 +137,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: Color(0xFF1F2029), // Matches the dark theme
-      body: Center(
-        child: Text(
-          "Main Content Here",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDrawerItem(BuildContext context,
-      {required IconData icon, required String text, required Function() onTap}) {
-    return ListTile(
-      leading: Icon(icon, color: Colors.white),
-      title: Text(
-        text,
-        style: TextStyle(color: Colors.white),
-      ),
-      onTap: onTap,
     );
   }
 }

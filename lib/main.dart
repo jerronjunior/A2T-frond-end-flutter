@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'launch.dart'; // Ensure this import points to your `launch.dart` file
 
+
 void main() {
   runApp(SignLanguageRecognitionApp());
 }

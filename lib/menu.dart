@@ -62,7 +62,7 @@ class HomePageWithDrawer extends StatelessWidget {
                     icon: Icons.home,
                     text: "Home",
                     onTap: () {
-                      // Navigate to Home
+                      Navigator.pop(context); // Close the drawer
                     },
                   ),
                   _buildDrawerItem(
@@ -70,7 +70,8 @@ class HomePageWithDrawer extends StatelessWidget {
                     icon: Icons.language,
                     text: "All Sign Languages",
                     onTap: () {
-                      // Navigate to All Sign Languages page
+                      // Add navigation logic here
+                      Navigator.pop(context); // Example logic
                     },
                   ),
                   _buildDrawerItem(
@@ -78,7 +79,8 @@ class HomePageWithDrawer extends StatelessWidget {
                     icon: Icons.translate,
                     text: "Translator",
                     onTap: () {
-                      // Navigate to Translator page
+                      // Add navigation logic here
+                      Navigator.pop(context); // Example logic
                     },
                   ),
                   _buildDrawerItem(
@@ -86,7 +88,8 @@ class HomePageWithDrawer extends StatelessWidget {
                     icon: Icons.info,
                     text: "How to Use",
                     onTap: () {
-                      // Navigate to How to Use page
+                      // Add navigation logic here
+                      Navigator.pop(context); // Example logic
                     },
                   ),
                   Divider(color: Colors.white24),
@@ -103,6 +106,7 @@ class HomePageWithDrawer extends StatelessWidget {
                     text: "Profile",
                     onTap: () {
                       // Navigate to Profile page
+                      Navigator.pop(context); // Example logic
                     },
                   ),
                   _buildDrawerItem(
@@ -110,7 +114,8 @@ class HomePageWithDrawer extends StatelessWidget {
                     icon: Icons.logout,
                     text: "Logout",
                     onTap: () {
-                      // Handle logout
+                      // Handle logout functionality
+                      Navigator.pop(context); // Example logic
                     },
                   ),
                 ],
@@ -121,16 +126,37 @@ class HomePageWithDrawer extends StatelessWidget {
       ),
       backgroundColor: Color(0xFF1F2029), // Matches the dark theme
       body: Center(
-        child: Text(
-          "Main Content Here",
-          style: TextStyle(color: Colors.white),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Welcome Back!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Select an option from the menu",
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildDrawerItem(BuildContext context,
-      {required IconData icon, required String text, required Function() onTap}) {
+  Widget _buildDrawerItem(
+    BuildContext context, {
+    required IconData icon,
+    required String text,
+    required Function() onTap,
+  }) {
     return ListTile(
       leading: Icon(icon, color: Colors.white),
       title: Text(
