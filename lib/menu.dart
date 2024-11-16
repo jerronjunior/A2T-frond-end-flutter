@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePageWithDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.home,
                     text: "Home",
                     onTap: () {
-                      Navigator.pop(context); // Close the drawer
+                      // Navigate to Home
                     },
                   ),
                   _buildDrawerItem(
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.language,
                     text: "All Sign Languages",
                     onTap: () {
-                      Navigator.pushNamed(context, '/allSignLanguages');
+                      // Navigate to All Sign Languages page
                     },
                   ),
                   _buildDrawerItem(
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.translate,
                     text: "Translator",
                     onTap: () {
-                      Navigator.pushNamed(context, '/translator');
+                      // Navigate to Translator page
                     },
                   ),
                   _buildDrawerItem(
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.info,
                     text: "How to Use",
                     onTap: () {
-                      Navigator.pushNamed(context, '/howToUse');
+                      // Navigate to How to Use page
                     },
                   ),
                   Divider(color: Colors.white24),
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.person,
                     text: "Profile",
                     onTap: () {
-                      Navigator.pushNamed(context, '/profile');
+                      // Navigate to Profile page
                     },
                   ),
                   _buildDrawerItem(
@@ -110,8 +110,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.logout,
                     text: "Logout",
                     onTap: () {
-                      // Implement logout logic here
-                      Navigator.pushReplacementNamed(context, '/login');
+                      // Handle logout
                     },
                   ),
                 ],
