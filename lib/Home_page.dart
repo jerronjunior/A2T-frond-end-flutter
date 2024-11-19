@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'menu.dart'; // Import Menu Page
 
 class HomePage extends StatelessWidget {
   @override

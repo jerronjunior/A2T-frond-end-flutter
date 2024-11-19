@@ -19,15 +19,16 @@ class LaunchPage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.deepOrange.shade400, Colors.grey.shade900],
+            colors: [Colors.blue.shade900, Colors.blue.shade500], // Updated gradient
           ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // Title
             Text(
-              'S L R',
+              'A2T',
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
@@ -35,10 +36,12 @@ class LaunchPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
+            // Subtitle
             Text(
-              'Sign Language Recognition',
+              'Action to Talk',
               style: TextStyle(
                 fontSize: 24,
+                fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
             ),
@@ -51,10 +54,11 @@ class LaunchPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 40),
+            // Hand Image
             Image.asset(
               'assets/hand_image.png', // Ensure this image is in your assets folder
-              width: 150,
-              height: 150,
+              width: 100,
+              height: 100,
             ),
           ],
         ),
