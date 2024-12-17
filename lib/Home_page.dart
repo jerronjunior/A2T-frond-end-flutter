@@ -23,7 +23,9 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: Color(0xFF1F2029), // Background color
+      backgroundColor: Color(0xFF1F2029), 
+      foregroundColor: Colors.white,
+      // Background color
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
